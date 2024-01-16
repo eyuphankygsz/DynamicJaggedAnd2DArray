@@ -3,15 +3,14 @@
 
 int main(void)
 {
-	int **arr;
-	int rows,cols;
-	int i, j;
-	int counter = 1;
+	int **arr, **jagged;
+	int rows,cols, i, j, counter = 1;
+	
+	//2D ARRAY AREA
 	printf("Rows: ");
 	scanf("%d",&rows);
 	printf("Columns: ");
 	scanf("%d",&cols);
-	
 	
 	arr = (int**)malloc(rows * sizeof(int*));
 	for(i = 0; i < rows; i++){
@@ -20,15 +19,12 @@ int main(void)
 			printf("NOT ENOUGH SPACE ON STACK!");
 			exit(1);
 		} 
-		for(j = 0; j < cols; j++){
+		for(j = 0; j < cols; j++)
 			arr[i][j] = counter++;
-		}
 	}
-	
 	for(i = 0; i < rows; i++){
-		for(j = 0; j < cols; j++){
+		for(j = 0; j < cols; j++)
 			printf("%d\t",arr[i][j]);
-		}
 		printf("\n");
 	}
 	
@@ -38,8 +34,7 @@ int main(void)
 	}
 	free(arr);
 	
-	int **jagged;
-	
+	//JAGGED ARRAY AREA
 	printf("Rows: ");
 	scanf("%d",&rows);
 	jagged = (int**)malloc(rows*sizeof(int*));
@@ -48,16 +43,14 @@ int main(void)
 		printf("Column %d: ",i+1);
 		scanf("%d",&cols);
 		jagged[i] = (int*)malloc(cols * sizeof(int));
-		for(j = 0; j < cols; j++){
+		for(j = 0; j < cols; j++)
 			jagged[i][j] = counter++;
-		}
 		jaggedcols[i] = cols;
 	}
 	
 	for(i = 0; i < rows; i++){
-		for(j = 0; j < jaggedcols[i]; j++){
+		for(j = 0; j < jaggedcols[i]; j++)
 			printf("%d\t",jagged[i][j]);
-		}
 		printf("\n");
 	}
 	
